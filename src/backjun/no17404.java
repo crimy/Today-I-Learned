@@ -19,7 +19,7 @@ public class no17404 {
 		//
 		sc.close();
 		
-		for( int i = 0 ; i < n ; i++ ) {
+		for( int i = 0 ; i < 3 ; i++ ) {
 			for( int j = 0 ; j < 3 ; j++ ) {
 				if( i == j ) {
 					dp[0][j] = rgb[0][j]; // 첫집의 색 고정
