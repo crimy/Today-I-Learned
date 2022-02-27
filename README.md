@@ -9,14 +9,15 @@ Index
 3. [22.02.27](#no3)
 --------------------------
 
-[22.02.22](#no1)
+#no1
+[22.02.22]
 https://www.acmicpc.net/problem/14725
 14725.
 Tree로 접근하여 풀이했으나, 출력 순서에 있어 순회 알고리즘이 차이가 있음. 타 자료 찾아본 뒤 수정 필요
 
 ----------------------------
-
-22.02.26(#no2)
+#no2
+22.02.26
 https://www.acmicpc.net/problem/10037
 10037.
 ### 문제
@@ -44,8 +45,8 @@ The sign company insists on charging Bessie more money for an 'F' sign than a 'J
 첫 for문 으로 시작점이 될 J를 정하고, 목표인 [f][t]가 J고, p[f][t]가 1이라면, 즉 두 pasture가 연결됐다면, dp[f][t]는 0, F가 된다.
 
 ------------------------------
-
-22.02.27(#no3)
+#no3
+22.02.27
 
 # [Gold II] 우수 마을 - 1949 
 
