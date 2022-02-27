@@ -4,19 +4,19 @@ This is a auto push repository for Baekjoon Online Judge created with [BaekjoonH
 
 Index
 
-1. [22.02.22](#1)
-2. [22.02.26](#2)
-3. [22.02.27](#3)
+1. [22.02.22](#no1)
+2. [22.02.26](#no2)
+3. [22.02.27](#no3)
 --------------------------
 
-[22.02.22](#1)
+[22.02.22](#no1)
 https://www.acmicpc.net/problem/14725
 14725.
 Tree로 접근하여 풀이했으나, 출력 순서에 있어 순회 알고리즘이 차이가 있음. 타 자료 찾아본 뒤 수정 필요
 
 ----------------------------
 
-[22.02.26](#2)
+[22.02.26](#no2)
 https://www.acmicpc.net/problem/10037
 10037.
 ### 문제
@@ -45,7 +45,7 @@ The sign company insists on charging Bessie more money for an 'F' sign than a 'J
 
 ------------------------------
 
-[22.02.27](#3)
+[22.02.27](#no3)
 
 # [Gold II] 우수 마을 - 1949 
 
