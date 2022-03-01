@@ -7,6 +7,7 @@ Index
 1. [22.02.22](#14725번)
 2. [22.02.26](#10037번)
 3. [22.02.27](#1949번)
+4. [22.03.01](#1956번)
 --------------------------
 
 
@@ -90,4 +91,74 @@ The sign company insists on charging Bessie more money for an 'F' sign than a 'J
 
 https://velog.io/@crimy950/2022.02.27-TIL
 
+-----------------------------
 
+## 1956번 
+
+22.03.01
+
+### 문제
+
+V개의 마을와 E개의 도로로 구성되어 있는 도시가 있다. 도로는 마을과 마을 사이에 놓여 있으며, 일방 통행 도로이다. 마을에는 편의상 1번부터 V번까지 번호가 매겨져 있다고 하자.
+
+당신은 도로를 따라 운동을 하기 위한 경로를 찾으려고 한다. 운동을 한 후에는 다시 시작점으로 돌아오는 것이 좋기 때문에, 우리는 사이클을 찾기를 원한다. 단, 당신은 운동을 매우 귀찮아하므로, 사이클을 이루는 도로의 길이의 합이 최소가 되도록 찾으려고 한다.
+
+도로의 정보가 주어졌을 때, 도로의 길이의 합이 가장 작은 사이클을 찾는 프로그램을 작성하시오. 두 마을을 왕복하는 경우도 사이클에 포함됨에 주의한다.
+
+```java
+
+public class no1956 {
+	static int[][] dp;
+	static int[][] map; 
+	static int v;
+	public static void main( String[] args ) {
+		Scanner sc = new Scanner( System.in );
+		v = sc.nextInt();
+		int e = sc.nextInt();
+		dp = new int[v+1][v+1];
+		map = new int[v+1][v+1];
+		int[] result = new int[v+1];
+		for( int i = 0 ; i < e ; i++ ) {
+			map[sc.nextInt()][sc.nextInt()] = sc.nextInt();
+		}
+		for( int i = 1; i < v+1 ; i++ ) { // 출발 마을
+			for( int j = 1; j < v+1; j++ ) {
+				if(map[i][j]!=0) cycle(i,j,map[i][j]);
+			}
+		}
+		for( int i = 1; i < v+1 ; i++ ) { // 출발 마을
+				result[i] = dp[i][i];
+		}
+		Arrays.sort(result);
+		for( int i = 0 ; i < v ; i++ ) {
+			if( result[i] != 0 ) {
+				System.out.println(result[i]); break;
+			}
+		}
+	}
+	private static void cycle( int start , int now, int d) {
+		if(dp[start][now] != 0) return;
+		dp[start][now] = map[start][now];
+		
+		if(map[now][start] != 0) {
+			dp[start][start] = d + map[now][start];
+		}
+		
+		for( int i = 1 ; i < v+1 ; i++ ) {
+			if(map[now][i] != 0) {
+				dp[start][i] = dp[start][now] + map[now][i];
+				cycle(start,i,dp[start][i]);
+			}
+		}
+		
+	}
+}
+```
+
+재귀호출을 사용하여 나름대로 직접 고민해서 프로그래밍했다. 예제입,출력에는 정답을 냈지만 제출의 결과는 오답처리.
+그 이유는 아무래도 예제의 경우 1번에서 1번으로 돌아오는 싸이클, 2번에서 2번으로 돌아오는 싸이클, 한 싸이클 내에서 최소값을 구할 필요가 없다. 
+1은 돌아오지 못하고, 2와 3은 경로가 하나 뿐이기 때문. 여러 싸이클을 고려해서 최소값을 구하는 알고리즘을 추가하지 않았다.
+그리고 현재와 같은 구조를 유지하면서 위와 같은 알고리즘을 추가하는 것은 힘들것으로 보인다.
+플로이드 와샬 알고리즘을 공부해보자.
+
+https://velog.io/@crimy950/2022.03.01-TIL
