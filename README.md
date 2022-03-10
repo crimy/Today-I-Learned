@@ -10,6 +10,10 @@ Index
 4. [22.03.01](#1956번)
 5. [22.03.03](#11758번)
 6. [22.03.07](#11404번)
+7. 22.03.10
+	+ [중복제거](#중복제거)
+	+ [주식판매](#주식판매)
+	+ [배열 밀기](#배열_밀기)
 --------------------------
 
 
@@ -253,6 +257,166 @@ public static void Floyd(int n) {
 ```
 플로이드 와샬 알고리즘을 이용하기 위한 함수. 경유지 k , 시작점 i, 도착점 j 의 값에 따른 반복 수행으로 경유를 통해 최단거리를 도출해낸다.
 
+----------------------------
 
 
+## 중복제거
+22.03.10
+
+<h2>  Remove Duplicates from Sorted Array</h2><hr><div><p>Given an integer array <code>nums</code> sorted in <strong>non-decreasing order</strong>, remove the duplicates <a href="https://en.wikipedia.org/wiki/In-place_algorithm" target="_blank"><strong>in-place</strong></a> such that each unique element appears only <strong>once</strong>. The <strong>relative order</strong> of the elements should be kept the <strong>same</strong>.</p>
+
+<p>Since it is impossible to change the length of the array in some languages, you must instead have the result be placed in the <strong>first part</strong> of the array <code>nums</code>. More formally, if there are <code>k</code> elements after removing the duplicates, then the first <code>k</code> elements of <code>nums</code>&nbsp;should hold the final result. It does not matter what you leave beyond the first&nbsp;<code>k</code>&nbsp;elements.</p>
+
+<p>Return <code>k</code><em> after placing the final result in the first </em><code>k</code><em> slots of </em><code>nums</code>.</p>
+
+<p>Do <strong>not</strong> allocate extra space for another array. You must do this by <strong>modifying the input array <a href="https://en.wikipedia.org/wiki/In-place_algorithm" target="_blank">in-place</a></strong> with O(1) extra memory.</p>
+
+<p><strong>Custom Judge:</strong></p>
+
+<p>The judge will test your solution with the following code:</p>
+
+<pre>int[] nums = [...]; // Input array
+int[] expectedNums = [...]; // The expected answer with correct length
+
+int k = removeDuplicates(nums); // Calls your implementation
+
+assert k == expectedNums.length;
+for (int i = 0; i &lt; k; i++) {
+    assert nums[i] == expectedNums[i];
+}
+</pre>
+
+<p>If all assertions pass, then your solution will be <strong>accepted</strong>.</p>
+
+<p>&nbsp;</p>
+<p><strong>Example 1:</strong></p>
+
+<pre><strong>Input:</strong> nums = [1,1,2]
+<strong>Output:</strong> 2, nums = [1,2,_]
+<strong>Explanation:</strong> Your function should return k = 2, with the first two elements of nums being 1 and 2 respectively.
+It does not matter what you leave beyond the returned k (hence they are underscores).
+</pre>
+
+<p><strong>Example 2:</strong></p>
+
+<pre><strong>Input:</strong> nums = [0,0,1,1,1,2,2,3,3,4]
+<strong>Output:</strong> 5, nums = [0,1,2,3,4,_,_,_,_,_]
+<strong>Explanation:</strong> Your function should return k = 5, with the first five elements of nums being 0, 1, 2, 3, and 4 respectively.
+It does not matter what you leave beyond the returned k (hence they are underscores).
+</pre>
+
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
+
+<ul>
+	<li><code>1 &lt;= nums.length &lt;= 3 * 10<sup>4</sup></code></li>
+	<li><code>-100 &lt;= nums[i] &lt;= 100</code></li>
+	<li><code>nums</code> is sorted in <strong>non-decreasing</strong> order.</li>
+</ul>
+</div>
+
+### 풀이 
+
+새로운 커뮤니티에서 접한 문제라 익숙치 않은 유형이었고, 영어를 해석하느라 다소 모호하게 이해한 부분이 있어 실제 난이도보다 조금 더 어렵게 느껴졌다.
+풀이 방식은 생각보다 간단했다. 실제 nums에 새로 입력할 index와 기존의 nums를 탐색할 index를 따로 둬서 탐색하는 index는 for문을 통해 자동으로 증가하도록 하고 새로 입력할 index는 이전의 값과 다른 값이 입력돼있을 경우를 판별해 증가시켜 입력한다.
+그를 이용해 중복돼서 연속되는 값을 제거하면서 새로 nums를 입력할 수 있고, unique한 값의 갯수 또한 입력하는 index를 통해 카운트 할 수 있다.
+
+--------------------------
+
+## 주식판매
+## Best Time to Buy and Sell Stock II
+
+<p>On each day, you may decide to buy and/or sell the stock. You can only hold <strong>at most one</strong> share of the stock at any time. However, you can buy it then immediately sell it on the <strong>same day</strong>.</p>
+
+<p>Find and return <em>the <strong>maximum</strong> profit you can achieve</em>.</p>
+
+<p>&nbsp;</p>
+<p><strong>Example 1:</strong></p>
+
+<pre><strong>Input:</strong> prices = [7,1,5,3,6,4]
+<strong>Output:</strong> 7
+<strong>Explanation:</strong> Buy on day 2 (price = 1) and sell on day 3 (price = 5), profit = 5-1 = 4.
+Then buy on day 4 (price = 3) and sell on day 5 (price = 6), profit = 6-3 = 3.
+Total profit is 4 + 3 = 7.
+</pre>
+
+<p><strong>Example 2:</strong></p>
+
+<pre><strong>Input:</strong> prices = [1,2,3,4,5]
+<strong>Output:</strong> 4
+<strong>Explanation:</strong> Buy on day 1 (price = 1) and sell on day 5 (price = 5), profit = 5-1 = 4.
+Total profit is 4.
+</pre>
+
+<p><strong>Example 3:</strong></p>
+
+<pre><strong>Input:</strong> prices = [7,6,4,3,1]
+<strong>Output:</strong> 0
+<strong>Explanation:</strong> There is no way to make a positive profit, so we never buy the stock to achieve the maximum profit of 0.
+</pre>
+
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
+
+<ul>
+	<li><code>1 &lt;= prices.length &lt;= 3 * 10<sup>4</sup></code></li>
+	<li><code>0 &lt;= prices[i] &lt;= 10<sup>4</sup></code></li>
+</ul>
+</div>
+
+### 풀이
+
+수익의 최고값을 얻어야 한다는 점에서 Dynamic Programming같은 복잡한 알고리즘을 사용해야 한다고 생각했지만 보다 단순한 방법이 쉽고 정확한 방법이었다.
+주식을 팔았던 날 바로 살 수 있다는 조건 때문이었다. 다음날 가격이 오르는 날은 모두 구매하여 모두 다음날 판매하도록 하면 수익을 낼 수 있는 모든 경우의 수를 포함하여 매매를 하는 것이 되기 때문에 그 방법이 최고값의 수익을 내게 된다.
+
+---------------------
+
+## 배열_밀기
+
+<h2>  Rotate Array</h2><hr><div><p>Given an array, rotate the array to the right by <code>k</code> steps, where <code>k</code> is non-negative.</p>
+
+<p>&nbsp;</p>
+<p><strong>Example 1:</strong></p>
+
+<pre><strong>Input:</strong> nums = [1,2,3,4,5,6,7], k = 3
+<strong>Output:</strong> [5,6,7,1,2,3,4]
+<strong>Explanation:</strong>
+rotate 1 steps to the right: [7,1,2,3,4,5,6]
+rotate 2 steps to the right: [6,7,1,2,3,4,5]
+rotate 3 steps to the right: [5,6,7,1,2,3,4]
+</pre>
+
+<p><strong>Example 2:</strong></p>
+
+<pre><strong>Input:</strong> nums = [-1,-100,3,99], k = 2
+<strong>Output:</strong> [3,99,-1,-100]
+<strong>Explanation:</strong> 
+rotate 1 steps to the right: [99,-1,-100,3]
+rotate 2 steps to the right: [3,99,-1,-100]
+</pre>
+
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
+
+<ul>
+	<li><code>1 &lt;= nums.length &lt;= 10<sup>5</sup></code></li>
+	<li><code>-2<sup>31</sup> &lt;= nums[i] &lt;= 2<sup>31</sup> - 1</code></li>
+	<li><code>0 &lt;= k &lt;= 10<sup>5</sup></code></li>
+</ul>
+
+<p>&nbsp;</p>
+<p><strong>Follow up:</strong></p>
+
+<ul>
+	<li>Try to come up with as many solutions as you can. There are at least <strong>three</strong> different ways to solve this problem.</li>
+	<li>Could you do it in-place with <code>O(1)</code> extra space?</li>
+</ul>
+</div>
+
+### 풀이
+
+간단하게 생각하여 단순히 k값만큼 반복하여 한칸씩 배열의 값을 오른쪽으로 밀어주는 식으로 풀이를 진행했다. 하지만 약간의 함정이 있었는데, 구동 시간의 제한으로 상당히 큰 크기의 Test Input을 시험하였을 때 이런 방법으로는 시간이 초과된다.
+그래서 한번에 쉬프트를 진행하는 방법으로 풀이해야한다는 걸 알았고, 여기서 문제는 k 값이 배열 크기보다 클 경우, 작을 경우, 같을 경우 모두를 고려하여 적절한 index 값을 입력해서 쉬프트를 해야 한다는 것이다.
+% 연산을 이용해 index 값을 입력했는데, k 값이 배열 크기보다 클 경우 배열의 크기를 벗어나는 % 연산 결과값이 나와 런타임 에러가 발생한다.
+이를 해결하기 위해 쉬프트되는 index에 한번더 % 연산을 시행해줘서 마무리했다.
 
