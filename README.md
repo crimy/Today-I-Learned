@@ -427,7 +427,7 @@ rotate 2 steps to the right: [3,99,-1,-100]
 
 -------------------------
 
-### 중복 포함
+### 중복포함
 22.03.11
 
 <h2>  Contains Duplicate</h2><hr><div><p>Given an integer array <code>nums</code>, return <code>true</code> if any value appears <strong>at least twice</strong> in the array, and return <code>false</code> if every element is distinct.</p>
@@ -458,7 +458,7 @@ rotate 2 steps to the right: [3,99,-1,-100]
 
 ---------------------------
 
-### 유일한 수
+### 유일한수
 
 <h2>  Single Number</h2><hr><div><p>Given a <strong>non-empty</strong>&nbsp;array of integers <code>nums</code>, every element appears <em>twice</em> except for one. Find that single one.</p>
 
