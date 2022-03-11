@@ -14,6 +14,11 @@ Index
 	+ [중복제거](#중복제거)
 	+ [주식판매](#주식판매)
 	+ [배열 밀기](#배열_밀기)
+8. 22.03.11
+	+ [중복 포함](#중복포함)
+	+ [유일한 수](#유일한수)
+	+ [공통되는 수](#공통되는수)
+	+ [1 더하기](#1더하기)
 --------------------------
 
 
@@ -420,3 +425,164 @@ rotate 2 steps to the right: [3,99,-1,-100]
 % 연산을 이용해 index 값을 입력했는데, k 값이 배열 크기보다 클 경우 배열의 크기를 벗어나는 % 연산 결과값이 나와 런타임 에러가 발생한다.
 이를 해결하기 위해 쉬프트되는 index에 한번더 % 연산을 시행해줘서 마무리했다.
 
+-------------------------
+
+### 중복 포함
+22.03.11
+
+<h2>  Contains Duplicate</h2><hr><div><p>Given an integer array <code>nums</code>, return <code>true</code> if any value appears <strong>at least twice</strong> in the array, and return <code>false</code> if every element is distinct.</p>
+
+<p>&nbsp;</p>
+<p><strong>Example 1:</strong></p>
+<pre><strong>Input:</strong> nums = [1,2,3,1]
+<strong>Output:</strong> true
+</pre><p><strong>Example 2:</strong></p>
+<pre><strong>Input:</strong> nums = [1,2,3,4]
+<strong>Output:</strong> false
+</pre><p><strong>Example 3:</strong></p>
+<pre><strong>Input:</strong> nums = [1,1,1,3,3,4,3,2,4,2]
+<strong>Output:</strong> true
+</pre>
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
+
+<ul>
+	<li><code>1 &lt;= nums.length &lt;= 10<sup>5</sup></code></li>
+	<li><code>-10<sup>9</sup> &lt;= nums[i] &lt;= 10<sup>9</sup></code></li>
+</ul>
+</div>
+
+### 풀이 
+
+단순하게 크기 순으로 nums를 정렬하여 for문을 통해 다음 값과 같은 값이 발견되면 true를 return한다.
+
+---------------------------
+
+### 유일한 수
+
+<h2>  Single Number</h2><hr><div><p>Given a <strong>non-empty</strong>&nbsp;array of integers <code>nums</code>, every element appears <em>twice</em> except for one. Find that single one.</p>
+
+<p>You must&nbsp;implement a solution with a linear runtime complexity and use&nbsp;only constant&nbsp;extra space.</p>
+
+<p>&nbsp;</p>
+<p><strong>Example 1:</strong></p>
+<pre><strong>Input:</strong> nums = [2,2,1]
+<strong>Output:</strong> 1
+</pre><p><strong>Example 2:</strong></p>
+<pre><strong>Input:</strong> nums = [4,1,2,1,2]
+<strong>Output:</strong> 4
+</pre><p><strong>Example 3:</strong></p>
+<pre><strong>Input:</strong> nums = [1]
+<strong>Output:</strong> 1
+</pre>
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
+
+<ul>
+	<li><code>1 &lt;= nums.length &lt;= 3 * 10<sup>4</sup></code></li>
+	<li><code>-3 * 10<sup>4</sup> &lt;= nums[i] &lt;= 3 * 10<sup>4</sup></code></li>
+	<li>Each element in the array appears twice except for one element which appears only once.</li>
+</ul>
+</div>
+
+### 풀이 
+반드시 중복되는 수는 짝수번째 index에서 나오기 때문에
+[1,2,2] 일 경우 0번. [4,1,2,1,2] 일 경우 [1,1,2,2,4] 로 4번.
+역시 크기 순으로 정렬하여 index를 2씩 증가하며 탐색한 뒤 다음 값과 달라지는 값이 있으면 해당 값을 리턴하도록 하였다.
+이렇게 했더니 문제점이 마지막에 유일한 수가 나왔을 경우 return이 되지않았다. 그래서 if문에서 해당 조건을 만족하지 않으면 마지막 index의 값을 리턴하도록 했다.
+
+------------------------
+
+### 공통되는수
+
+<h2>  Intersection of Two Arrays II</h2><hr><div><p>Given two integer arrays <code>nums1</code> and <code>nums2</code>, return <em>an array of their intersection</em>. Each element in the result must appear as many times as it shows in both arrays and you may return the result in <strong>any order</strong>.</p>
+
+<p>&nbsp;</p>
+<p><strong>Example 1:</strong></p>
+
+<pre><strong>Input:</strong> nums1 = [1,2,2,1], nums2 = [2,2]
+<strong>Output:</strong> [2,2]
+</pre>
+
+<p><strong>Example 2:</strong></p>
+
+<pre><strong>Input:</strong> nums1 = [4,9,5], nums2 = [9,4,9,8,4]
+<strong>Output:</strong> [4,9]
+<strong>Explanation:</strong> [9,4] is also accepted.
+</pre>
+
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
+
+<ul>
+	<li><code>1 &lt;= nums1.length, nums2.length &lt;= 1000</code></li>
+	<li><code>0 &lt;= nums1[i], nums2[i] &lt;= 1000</code></li>
+</ul>
+
+<p>&nbsp;</p>
+<p><strong>Follow up:</strong></p>
+
+<ul>
+	<li>What if the given array is already sorted? How would you optimize your algorithm?</li>
+	<li>What if <code>nums1</code>'s size is small compared to <code>nums2</code>'s size? Which algorithm is better?</li>
+	<li>What if elements of <code>nums2</code> are stored on disk, and the memory is limited such that you cannot load all elements into the memory at once?</li>
+</ul>
+</div>
+
+### 풀이
+처음에는 nums1, nums2 중 크기가 작은 배열과 같은 크기로 배열을 만들어 리턴했지만, 지정되지 않은 값이 0으로 입력돼 오류가 발생했다.
+ArrayList를 이용해 미리 겹치는 값을 저장한 후 , 해당 값을 nums1 과 nums2 에서 가질 수 없는 값인 -1로 바꿔주고 list에 저장했다.
+int size 를 선언하여 미리 리턴할 배열의 크기를 정해두고, 겹치는 값이 발견될 때마다 증가시켰다.
+
+----------------------
+### 1더하기
+
+<h2>  Plus One</h2><hr><div><p>You are given a <strong>large integer</strong> represented as an integer array <code>digits</code>, where each <code>digits[i]</code> is the <code>i<sup>th</sup></code> digit of the integer. The digits are ordered from most significant to least significant in left-to-right order. The large integer does not contain any leading <code>0</code>'s.</p>
+
+<p>Increment the large integer by one and return <em>the resulting array of digits</em>.</p>
+
+<p>&nbsp;</p>
+<p><strong>Example 1:</strong></p>
+
+<pre><strong>Input:</strong> digits = [1,2,3]
+<strong>Output:</strong> [1,2,4]
+<strong>Explanation:</strong> The array represents the integer 123.
+Incrementing by one gives 123 + 1 = 124.
+Thus, the result should be [1,2,4].
+</pre>
+
+<p><strong>Example 2:</strong></p>
+
+<pre><strong>Input:</strong> digits = [4,3,2,1]
+<strong>Output:</strong> [4,3,2,2]
+<strong>Explanation:</strong> The array represents the integer 4321.
+Incrementing by one gives 4321 + 1 = 4322.
+Thus, the result should be [4,3,2,2].
+</pre>
+
+<p><strong>Example 3:</strong></p>
+
+<pre><strong>Input:</strong> digits = [9]
+<strong>Output:</strong> [1,0]
+<strong>Explanation:</strong> The array represents the integer 9.
+Incrementing by one gives 9 + 1 = 10.
+Thus, the result should be [1,0].
+</pre>
+
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
+
+<ul>
+	<li><code>1 &lt;= digits.length &lt;= 100</code></li>
+	<li><code>0 &lt;= digits[i] &lt;= 9</code></li>
+	<li><code>digits</code> does not contain any leading <code>0</code>'s.</li>
+</ul>
+</div>
+
+### 풀이
+처음엔 int value를 선언하여 값을 int로 직접 더해서 다시 다른 배열에 집어넣는 방식을 선택했다. 배열의 크기를 선택하기 편할 것 같아 log10과 Math.pow를 이용해서 해당 값의 자릿수와 각 자리의 값을 추출해서 사용했다.
+이럴 때 문제점이 test input 중 int가 표현할 수 있는 최대값을 넘는 값이 있었다. 
+그래서 배열만을 이용하는 방식으로 변경해서 다시 시도했다.
+1의 자리수에 1을 더한 후 차례대로 마지막 배열부터 10이라는 값이 발견되면 0으로 바꾸고, 그 윗 자리 값을 1더하는 반복문을 사용했다.
+가장 큰 자리 수의 값이 10이 되면, 새로운 배열을 만들어 1 , 0 으로 시작하고 뒤의 값은 digits와 같은 값을 갖도록 하여 리턴했다.
+이렇게 했더니 한자리 수에서 ArrayIndexOutOfBounds Exception이 발생했고, 이를 해결하기 위해 한자릿수는 예외적으로 처리했다.
