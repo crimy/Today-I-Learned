@@ -19,6 +19,9 @@ Index
 	+ [유일한 수](#유일한수)
 	+ [공통되는 수](#공통되는수)
 	+ [1 더하기](#1더하기)
+9. 22.03.14
+	+[String 뒤집기](#String뒤집기)
+	+[int 뒤집기](#int뒤집기)
 --------------------------
 
 
@@ -586,3 +589,73 @@ Thus, the result should be [1,0].
 1의 자리수에 1을 더한 후 차례대로 마지막 배열부터 10이라는 값이 발견되면 0으로 바꾸고, 그 윗 자리 값을 1더하는 반복문을 사용했다.
 가장 큰 자리 수의 값이 10이 되면, 새로운 배열을 만들어 1 , 0 으로 시작하고 뒤의 값은 digits와 같은 값을 갖도록 하여 리턴했다.
 이렇게 했더니 한자리 수에서 ArrayIndexOutOfBounds Exception이 발생했고, 이를 해결하기 위해 한자릿수는 예외적으로 처리했다.
+
+------------------
+
+### String뒤집기
+
+<h2>  Reverse String</h2><hr><div><p>Write a function that reverses a string. The input string is given as an array of characters <code>s</code>.</p>
+
+<p>You must do this by modifying the input array <a href="https://en.wikipedia.org/wiki/In-place_algorithm" target="_blank">in-place</a> with <code>O(1)</code> extra memory.</p>
+
+<p>&nbsp;</p>
+<p><strong>Example 1:</strong></p>
+<pre><strong>Input:</strong> s = ["h","e","l","l","o"]
+<strong>Output:</strong> ["o","l","l","e","h"]
+</pre><p><strong>Example 2:</strong></p>
+<pre><strong>Input:</strong> s = ["H","a","n","n","a","h"]
+<strong>Output:</strong> ["h","a","n","n","a","H"]
+</pre>
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
+
+<ul>
+	<li><code>1 &lt;= s.length &lt;= 10<sup>5</sup></code></li>
+	<li><code>s[i]</code> is a <a href="https://en.wikipedia.org/wiki/ASCII#Printable_characters" target="_blank">printable ascii character</a>.</li>
+</ul>
+</div>
+
+### 풀이
+
+문자열을 거꾸로 뒤집어서 나타낸다. char[] 인 temp를 만들어 clone으로 같은 배열을 대입하고, temp의 값을 이용해서 s에 새로운 값을 대입했다.
+
+-----------------
+
+### int뒤집기
+
+<h2>  Reverse Integer</h2><hr><div><p>Given a signed 32-bit integer <code>x</code>, return <code>x</code><em> with its digits reversed</em>. If reversing <code>x</code> causes the value to go outside the signed 32-bit integer range <code>[-2<sup>31</sup>, 2<sup>31</sup> - 1]</code>, then return <code>0</code>.</p>
+
+<p><strong>Assume the environment does not allow you to store 64-bit integers (signed or unsigned).</strong></p>
+
+<p>&nbsp;</p>
+<p><strong>Example 1:</strong></p>
+
+<pre><strong>Input:</strong> x = 123
+<strong>Output:</strong> 321
+</pre>
+
+<p><strong>Example 2:</strong></p>
+
+<pre><strong>Input:</strong> x = -123
+<strong>Output:</strong> -321
+</pre>
+
+<p><strong>Example 3:</strong></p>
+
+<pre><strong>Input:</strong> x = 120
+<strong>Output:</strong> 21
+</pre>
+
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
+
+<ul>
+	<li><code>-2<sup>31</sup> &lt;= x &lt;= 2<sup>31</sup> - 1</code></li>
+</ul>
+</div>
+
+### 풀이
+
+answer에 int값을 윗 자리수부터 Math.pow와 Math.log10을 이용해서 자리수의 값을 대입하고 x에서 해당 값을 뺀다.
+그리고 테스트한 후 음수에서 문제가 발생했고, 음수가 대입될 경우 x에 미리 -1을 곱한 후 flag로 음수에 대한 표시를 하고, return하는 answer에 다시 -1을 곱하는 방식으로 
+
