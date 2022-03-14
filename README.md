@@ -20,8 +20,8 @@ Index
 	+ [공통되는 수](#공통되는수)
 	+ [1 더하기](#1더하기)
 9. 22.03.14
-	+[String뒤집기](#String뒤집기)
-	+[int뒤집기](#int뒤집기)
+	+ [string뒤집기](#string뒤집기)
+	+ [int뒤집기](#int뒤집기)
 --------------------------
 
 
@@ -592,7 +592,7 @@ Thus, the result should be [1,0].
 
 ------------------
 
-### String뒤집기
+### string뒤집기
 
 <h2>  Reverse String</h2><hr><div><p>Write a function that reverses a string. The input string is given as an array of characters <code>s</code>.</p>
 
